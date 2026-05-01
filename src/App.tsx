@@ -19,7 +19,7 @@ const alerts   = alertsRaw   as Alert[]
 function getInitialDark(): boolean {
   const stored = localStorage.getItem('medtrack-dark')
   if (stored !== null) return stored === 'true'
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
+  return false
 }
 
 export default function App() {
