@@ -1,67 +1,34 @@
 # MedTrack — Healthcare Inventory Intelligence
 
-A modern, fully responsive healthcare inventory and sales analytics dashboard built with React, TypeScript, and Tailwind CSS. MedTrack gives medical operations teams a clear real-time view of product stock levels, regional sales performance, and inventory alerts — all from a single-page application with zero backend required.
+> A polished, fully responsive healthcare inventory and sales analytics dashboard built with React, TypeScript, and Tailwind CSS.
+
+MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clear real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a fully sortable inventory table, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
 
 ---
 
-## Screenshot
+## Highlights
 
-> Overview · Sales Analytics · Inventory · Alerts
+- **Overview Panel built for skim-reading**: 4 KPI cards including total products, units sold this month, active alert count (turns red when > 5), and top-performing region. Values computed live from local JSON data.
+- **Sales Analytics** with interactive Recharts: a line chart showing a 12-month sales trend across 5 global regions, and a responsive bar chart of units sold by medical product category.
+- **Inventory Table** featuring all medical products with live search functionality, dropdown filters (category and region), and automatically computed status badges (In Stock, Low Stock, Critical).
+- **Alerts Panel** rendering active inventory alerts, sorted automatically by severity. Features custom stock progress bars and severity badges.
+- **Dark, enterprise UI** with a built-in light / dark mode toggle that persists to `localStorage` and respects system preferences. Tailwind tokens: `#0f172a` background, `#1e293b` cards.
+- **Subtle fade-in-up animations** with staggered delays for a polished, modern feel on every section and card.
+- **Zero-backend architecture** — fully static React SPA querying local JSON. No API keys, no servers, just pure frontend logic.
 
-| Dark Mode | Light Mode |
-|-----------|------------|
-| KPI cards, charts, searchable table, and severity-sorted alert cards | Same layout with light theme |
+## Tech stack
 
----
+**Frontend**<br>
+![React](https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-22B5BF?style=for-the-badge&logo=react&logoColor=white)
 
-## Features
+**Deployment**<br>
+![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-### Overview Panel
-- **4 KPI cards** — Total products, units sold this month, active alert count (turns red when > 5), and top-performing region
-- Values are computed live from the mock JSON data
-
-### Sales Analytics
-- **Line chart** — Monthly sales trend across all 5 regions for the last 12 months (May 2025 – Apr 2026)
-- **Bar chart** — Units sold by product category (cardiovascular, orthopedic, surgical) for the current month
-- Both charts are fully responsive via Recharts + ResizableContainer
-
-### Inventory Table
-- All 20 medical products in a clean, sortable-friendly table
-- **Live search** by product name
-- **Dropdown filters** by category and region
-- **Status badges** — In Stock (green), Low Stock (yellow), Critical (red) — computed from current stock levels
-
-### Alerts Panel
-- Cards for each of the 10 active inventory alerts
-- **Severity badges** — High, Medium, Low
-- **Stock progress bar** showing current vs. minimum required stock percentage
-- Sorted by severity (high → medium → low) with a summary chip row at the top
-
-### UX & Design
-- **Light / Dark mode** toggle — persists to `localStorage` and respects the OS `prefers-color-scheme` on first visit
-- Dark theme: `#0f172a` background, `#1e293b` cards
-- Subtle **fade-in-up animations** with staggered delays on every section and card
-- Sticky header with tab navigation
-- Custom styled scrollbar
-- Fully responsive from mobile to widescreen
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
-| Build tool | [Vite 5](https://vitejs.dev/) |
-| Styling | [Tailwind CSS 3](https://tailwindcss.com/) (dark mode via `class` strategy) |
-| Charts | [Recharts 2](https://recharts.org/) |
-| Icons | [Lucide React](https://lucide.dev/) |
-| Data | Static JSON files — no backend, no API keys |
-| Deployment | [Vercel](https://vercel.com/) (config included) |
-
----
-
-## Project Structure
+## Project layout
 
 ```
 medtrack/
@@ -81,8 +48,8 @@ medtrack/
 │   │   ├── Header.tsx                # Sticky header, tabs, dark toggle
 │   │   └── Footer.tsx
 │   ├── data/
-│   │   ├── products.json             # 20 medical products
-│   │   ├── regions.json              # 5 regions × 12 months of sales data
+│   │   ├── products.json             # 20 medical products (Cardio, Ortho, Surgical)
+│   │   ├── regions.json              # 5 regions × 12 months (May 2025 - Apr 2026)
 │   │   └── alerts.json               # 10 inventory alerts
 │   ├── types/
 │   │   └── index.ts                  # Shared TypeScript interfaces
@@ -97,14 +64,11 @@ medtrack/
 └── vercel.json                       # Vercel SPA rewrite rule
 ```
 
----
+## Quick start
 
-## Getting Started
+> **TL;DR** — clone, install, and run. It's a static React SPA powered by Vite, so no backend setup is required.
 
-### Prerequisites
-- Node.js 18+ and npm
-
-### Install & Run
+### 1. Install & Run
 
 ```bash
 # Clone the repository
@@ -118,66 +82,54 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
+Open <http://localhost:5173> to view the app.
 
-### Build for Production
+### 2. Build for Production
 
 ```bash
 npm run build
+npm run preview
 ```
 
 Output is written to `dist/` and is ready to serve as a static site.
 
-### Preview the Production Build
+## Mock Data Overview
 
-```bash
-npm run preview
-```
+The app relies on static JSON files located in `src/data/` to simulate an active database:
 
----
+| File | Content | Notes |
+|---|---|---|
+| `products.json` | 20 medical products | Three categories: Cardiovascular, Orthopedic, Surgical. Features `id`, `name`, `category`, `stock`, `unitsSoldThisMonth`, `region`. |
+| `regions.json` | Regional sales trends | Five global regions (North America, Europe, Asia, Latin America, Middle East) with 12 months of sales data. |
+| `alerts.json` | Inventory alerts | Ten active alerts featuring `severity` (high / medium / low), `currentStock`, and `minimumRequired`. |
+
+## End-to-end workflow
+
+1. **Dashboard Overview** — At a glance, review KPI cards that aggregate totals across the mock database.
+2. **Sales Review** — Switch to the Sales Analytics view to analyze historical trends and category-specific volume.
+3. **Inventory Management** — Open the Inventory view to filter by region or category, search for specific equipment, and spot critically low stock via automatically mapped status badges.
+4. **Alerts Resolution** — View the prioritized Alerts Panel. High severity alerts are surfaced first, giving an operation manager an immediate action list.
+5. **Dark Mode toggle** — Click the sun/moon icon in the header seamlessly.
 
 ## Deployment (Vercel)
 
-This project includes a `vercel.json` with SPA rewrite rules. To deploy:
+This project is configured out-of-the-box for [Vercel](https://vercel.com/) with a built-in `vercel.json` SPA rewrite rule.
 
-**Option 1 — Vercel CLI:**
 ```bash
 npm i -g vercel
 vercel
 ```
+Alternatively, connect the GitHub repository in the Vercel dashboard and let Vercel auto-detect the Vite build.
 
-**Option 2 — GitHub Integration:**
-1. Push this repository to GitHub
-2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Vercel auto-detects Vite — no extra configuration needed
+## Roadmap ideas
 
----
+These aren't built — they're natural next moves if you want to extend the project:
 
-## Mock Data Overview
-
-### `products.json`
-20 medical products across three categories:
-- **Cardiovascular** — CardioStent Pro, HeartValve Ultra, AortaGraft Plus, and more
-- **Orthopedic** — TitaniumKnee 3D, SpineAlign Pro, BoneScrew Flex, and more
-- **Surgical** — LapraScalpel Neo, SurgiThread Pro, EndoScope 4K, and more
-
-Each product has: `id`, `name`, `category`, `stock`, `unitsSoldThisMonth`, `region`
-
-### `regions.json`
-Five global regions with 12 months of monthly sales figures (May 2025 – Apr 2026):
-North America · Europe · Asia · Latin America · Middle East
-
-### `alerts.json`
-Ten inventory alerts with `severity` (high / medium / low), `currentStock`, and `minimumRequired`.
-
----
-
-## Author
-
-Built by **Keylor Barrantes**
-
----
+- Connect to a real database (e.g. Supabase, Firebase, or a custom backend)
+- Add user authentication and role-based access for viewing hospital stock
+- Export reports as PDF or CSV directly from the table views
+- Real-time WebSockets to update stock numbers dynamically
 
 ## License
 
-MIT
+MIT — do whatever you want.
