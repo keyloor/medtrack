@@ -1,5 +1,7 @@
 # MedTrack — Healthcare Inventory Intelligence
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Dashboard-000000?style=for-the-badge&logo=vercel)](https://medproducts-tracker.vercel.app/)
+
 > A polished, fully responsive healthcare inventory and sales analytics dashboard built with React, TypeScript, and Tailwind CSS.
 
 MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clear real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a fully sortable inventory table, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
