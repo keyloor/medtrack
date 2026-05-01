@@ -1,0 +1,22 @@
+[
+  { "id": 1,  "name": "CardioStent Pro",    "category": "cardiovascular", "stock": 145, "unitsSoldThisMonth": 38, "region": "North America" },
+  { "id": 2,  "name": "HeartValve Ultra",   "category": "cardiovascular", "stock": 12,  "unitsSoldThisMonth": 52, "region": "Europe" },
+  { "id": 3,  "name": "AortaGraft Plus",    "category": "cardiovascular", "stock": 4,   "unitsSoldThisMonth": 31, "region": "Asia" },
+  { "id": 4,  "name": "VascularClip 360",   "category": "cardiovascular", "stock": 87,  "unitsSoldThisMonth": 24, "region": "Latin America" },
+  { "id": 5,  "name": "PaceGuard Elite",    "category": "cardiovascular", "stock": 63,  "unitsSoldThisMonth": 19, "region": "Middle East" },
+  { "id": 6,  "name": "NeuroPulse 5G",      "category": "cardiovascular", "stock": 41,  "unitsSoldThisMonth": 16, "region": "Europe" },
+  { "id": 7,  "name": "FemoralPatch HD",    "category": "cardiovascular", "stock": 94,  "unitsSoldThisMonth": 33, "region": "Middle East" },
+  { "id": 8,  "name": "TitaniumKnee 3D",    "category": "orthopedic",     "stock": 78,  "unitsSoldThisMonth": 45, "region": "North America" },
+  { "id": 9,  "name": "SpineAlign Pro",     "category": "orthopedic",     "stock": 7,   "unitsSoldThisMonth": 61, "region": "Europe" },
+  { "id": 10, "name": "HipJoint X9",        "category": "orthopedic",     "stock": 34,  "unitsSoldThisMonth": 28, "region": "Asia" },
+  { "id": 11, "name": "BoneScrew Flex",     "category": "orthopedic",     "stock": 210, "unitsSoldThisMonth": 92, "region": "North America" },
+  { "id": 12, "name": "CartilageGel Pure",  "category": "orthopedic",     "stock": 15,  "unitsSoldThisMonth": 37, "region": "Latin America" },
+  { "id": 13, "name": "OrthoSeal Bio",      "category": "orthopedic",     "stock": 18,  "unitsSoldThisMonth": 47, "region": "North America" },
+  { "id": 14, "name": "LapraScalpel Neo",   "category": "surgical",       "stock": 3,   "unitsSoldThisMonth": 44, "region": "Middle East" },
+  { "id": 15, "name": "SurgiThread Pro",    "category": "surgical",       "stock": 312, "unitsSoldThisMonth": 105,"region": "North America" },
+  { "id": 16, "name": "EndoScope 4K",       "category": "surgical",       "stock": 22,  "unitsSoldThisMonth": 18, "region": "Europe" },
+  { "id": 17, "name": "StapleGun MX5",      "category": "surgical",       "stock": 56,  "unitsSoldThisMonth": 73, "region": "Asia" },
+  { "id": 18, "name": "CauterEase Plus",    "category": "surgical",       "stock": 9,   "unitsSoldThisMonth": 29, "region": "Latin America" },
+  { "id": 19, "name": "AbsorbaStitch",      "category": "surgical",       "stock": 178, "unitsSoldThisMonth": 81, "region": "North America" },
+  { "id": 20, "name": "RoboArm Assist",     "category": "surgical",       "stock": 6,   "unitsSoldThisMonth": 11, "region": "Asia" }
+]

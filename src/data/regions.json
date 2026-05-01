@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "name": "North America",
+    "color": "#3b82f6",
+    "monthlyData": [
+      { "month": "May",  "sales": 1240 },
+      { "month": "Jun",  "sales": 1380 },
+      { "month": "Jul",  "sales": 1520 },
+      { "month": "Aug",  "sales": 1460 },
+      { "month": "Sep",  "sales": 1590 },
+      { "month": "Oct",  "sales": 1720 },
+      { "month": "Nov",  "sales": 1680 },
+      { "month": "Dec",  "sales": 1840 },
+      { "month": "Jan",  "sales": 1760 },
+      { "month": "Feb",  "sales": 1680 },
+      { "month": "Mar",  "sales": 1820 },
+      { "month": "Apr",  "sales": 1950 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Europe",
+    "color": "#8b5cf6",
+    "monthlyData": [
+      { "month": "May",  "sales": 1050 },
+      { "month": "Jun",  "sales": 1120 },
+      { "month": "Jul",  "sales": 1080 },
+      { "month": "Aug",  "sales": 1160 },
+      { "month": "Sep",  "sales": 1240 },
+      { "month": "Oct",  "sales": 1180 },
+      { "month": "Nov",  "sales": 1300 },
+      { "month": "Dec",  "sales": 1380 },
+      { "month": "Jan",  "sales": 1290 },
+      { "month": "Feb",  "sales": 1350 },
+      { "month": "Mar",  "sales": 1410 },
+      { "month": "Apr",  "sales": 1480 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Asia",
+    "color": "#10b981",
+    "monthlyData": [
+      { "month": "May",  "sales": 920  },
+      { "month": "Jun",  "sales": 980  },
+      { "month": "Jul",  "sales": 1060 },
+      { "month": "Aug",  "sales": 1120 },
+      { "month": "Sep",  "sales": 1080 },
+      { "month": "Oct",  "sales": 1150 },
+      { "month": "Nov",  "sales": 1240 },
+      { "month": "Dec",  "sales": 1300 },
+      { "month": "Jan",  "sales": 1260 },
+      { "month": "Feb",  "sales": 1320 },
+      { "month": "Mar",  "sales": 1380 },
+      { "month": "Apr",  "sales": 1420 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Latin America",
+    "color": "#f59e0b",
+    "monthlyData": [
+      { "month": "May",  "sales": 780  },
+      { "month": "Jun",  "sales": 820  },
+      { "month": "Jul",  "sales": 860  },
+      { "month": "Aug",  "sales": 910  },
+      { "month": "Sep",  "sales": 880  },
+      { "month": "Oct",  "sales": 950  },
+      { "month": "Nov",  "sales": 920  },
+      { "month": "Dec",  "sales": 1010 },
+      { "month": "Jan",  "sales": 980  },
+      { "month": "Feb",  "sales": 1040 },
+      { "month": "Mar",  "sales": 1100 },
+      { "month": "Apr",  "sales": 1150 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Middle East",
+    "color": "#ef4444",
+    "monthlyData": [
+      { "month": "May",  "sales": 540  },
+      { "month": "Jun",  "sales": 580  },
+      { "month": "Jul",  "sales": 610  },
+      { "month": "Aug",  "sales": 590  },
+      { "month": "Sep",  "sales": 640  },
+      { "month": "Oct",  "sales": 680  },
+      { "month": "Nov",  "sales": 720  },
+      { "month": "Dec",  "sales": 760  },
+      { "month": "Jan",  "sales": 740  },
+      { "month": "Feb",  "sales": 780  },
+      { "month": "Mar",  "sales": 820  },
+      { "month": "Apr",  "sales": 860  }
+    ]
+  }
+]

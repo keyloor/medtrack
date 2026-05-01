@@ -1,0 +1,12 @@
+[
+  { "id": 1,  "product": "AortaGraft Plus",   "severity": "high",   "currentStock": 4,  "minimumRequired": 25 },
+  { "id": 2,  "product": "LapraScalpel Neo",  "severity": "high",   "currentStock": 3,  "minimumRequired": 30 },
+  { "id": 3,  "product": "RoboArm Assist",    "severity": "high",   "currentStock": 6,  "minimumRequired": 20 },
+  { "id": 4,  "product": "HeartValve Ultra",  "severity": "high",   "currentStock": 12, "minimumRequired": 40 },
+  { "id": 5,  "product": "SpineAlign Pro",    "severity": "high",   "currentStock": 7,  "minimumRequired": 35 },
+  { "id": 6,  "product": "CauterEase Plus",   "severity": "medium", "currentStock": 9,  "minimumRequired": 25 },
+  { "id": 7,  "product": "CartilageGel Pure", "severity": "medium", "currentStock": 15, "minimumRequired": 30 },
+  { "id": 8,  "product": "OrthoSeal Bio",     "severity": "medium", "currentStock": 18, "minimumRequired": 35 },
+  { "id": 9,  "product": "EndoScope 4K",      "severity": "low",    "currentStock": 22, "minimumRequired": 30 },
+  { "id": 10, "product": "PaceGuard Elite",   "severity": "low",    "currentStock": 63, "minimumRequired": 75 }
+]
