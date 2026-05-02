@@ -4,7 +4,7 @@
 
 > A polished, fully responsive healthcare inventory and sales analytics dashboard built with React, TypeScript, and Tailwind CSS.
 
-MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clear real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a fully sortable inventory table, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
+MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clearimg.shields.io real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a fully sortable inventory table, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
 
 ---
 
@@ -99,11 +99,11 @@ Output is written to `dist/` and is ready to serve as a static site.
 
 The app relies on static JSON files located in `src/data/` to simulate an active database:
 
-| File | Content | Notes |
-|---|---|---|
-| `products.json` | 20 medical products | Three categories: Cardiovascular, Orthopedic, Surgical. Features `id`, `name`, `category`, `stock`, `unitsSoldThisMonth`, `region`. |
-| `regions.json` | Regional sales trends | Five global regions (North America, Europe, Asia, Latin America, Middle East) with 12 months of sales data. |
-| `alerts.json` | Inventory alerts | Ten active alerts featuring `severity` (high / medium / low), `currentStock`, and `minimumRequired`. |
+| File            | Content               | Notes                                                                                                                               |
+| --------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `products.json` | 20 medical products   | Three categories: Cardiovascular, Orthopedic, Surgical. Features `id`, `name`, `category`, `stock`, `unitsSoldThisMonth`, `region`. |
+| `regions.json`  | Regional sales trends | Five global regions (North America, Europe, Asia, Latin America, Middle East) with 12 months of sales data.                         |
+| `alerts.json`   | Inventory alerts      | Ten active alerts featuring `severity` (high / medium / low), `currentStock`, and `minimumRequired`.                                |
 
 ## End-to-end workflow
 
@@ -121,6 +121,7 @@ This project is configured out-of-the-box for [Vercel](https://vercel.com/) with
 npm i -g vercel
 vercel
 ```
+
 Alternatively, connect the GitHub repository in the Vercel dashboard and let Vercel auto-detect the Vite build.
 
 ## Roadmap ideas
