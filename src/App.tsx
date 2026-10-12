@@ -16,15 +16,24 @@ const products = productsRaw as Product[]
 const regions  = regionsRaw  as RegionData[]
 const alerts   = alertsRaw   as Alert[]
 
+const TABS: Tab[] = ['overview', 'sales', 'inventory', 'alerts']
+
 function getInitialDark(): boolean {
-  const stored = localStorage.getItem('medtrack-dark')
-  if (stored !== null) return stored === 'true'
-  return false
+  try {
+    return localStorage.getItem('medtrack-dark') === 'true'
+  } catch {
+    return false
+  }
+}
+
+function getInitialTab(): Tab {
+  const hash = window.location.hash.slice(1) as Tab
+  return TABS.includes(hash) ? hash : 'overview'
 }
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(getInitialDark)
-  const [activeTab, setActiveTab] = useState<Tab>('overview')
+  const [activeTab, setActiveTab] = useState<Tab>(getInitialTab)
 
   useEffect(() => {
     if (darkMode) {
@@ -32,13 +41,24 @@ export default function App() {
     } else {
       document.documentElement.classList.remove('dark')
     }
-    localStorage.setItem('medtrack-dark', String(darkMode))
+    try {
+      localStorage.setItem('medtrack-dark', String(darkMode))
+    } catch {
+      // storage unavailable (private mode)
+    }
   }, [darkMode])
+
+  useEffect(() => {
+    const onHash = () => setActiveTab(getInitialTab())
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
 
   const toggleDark = () => setDarkMode((d) => !d)
 
   const handleSetTab = (tab: Tab) => {
     setActiveTab(tab)
+    window.history.replaceState(null, '', `#${tab}`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

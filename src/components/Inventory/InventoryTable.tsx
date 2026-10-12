@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Search } from 'lucide-react'
+import { Search, ArrowUp, ArrowDown, ArrowUpDown, Download } from 'lucide-react'
 import type { Product, Category, Region } from '../../types'
 
 interface Props {
@@ -28,6 +28,30 @@ const categoryStyles: Record<Category, string> = {
 
 const ALL = 'All'
 
+type SortKey = 'name' | 'category' | 'region' | 'stock' | 'unitsSoldThisMonth'
+type SortDir = 'asc' | 'desc'
+
+const statuses: (StockStatus | typeof ALL)[] = [ALL, 'In Stock', 'Low Stock', 'Critical']
+
+function toCsv(rows: Product[]): string {
+  const esc = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`
+  const header = ['Product', 'Category', 'Region', 'Stock', 'Sold / Mo', 'Status']
+  const lines = rows.map((p) =>
+    [p.name, p.category, p.region, p.stock, p.unitsSoldThisMonth, getStatus(p.stock)].map(esc).join(',')
+  )
+  return [header.map(esc).join(','), ...lines].join('\n')
+}
+
+function downloadCsv(rows: Product[]) {
+  const blob = new Blob([toCsv(rows)], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'medtrack-inventory.csv'
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
 const categories: (Category | typeof ALL)[] = [ALL, 'cardiovascular', 'orthopedic', 'surgical']
 const regions: (Region | typeof ALL)[] = [ALL, 'North America', 'Latin America', 'Europe', 'Asia', 'Middle East']
 
@@ -35,15 +59,52 @@ export default function InventoryTable({ products }: Props) {
   const [search, setSearch] = useState('')
   const [catFilter, setCatFilter] = useState<Category | typeof ALL>(ALL)
   const [regionFilter, setRegionFilter] = useState<Region | typeof ALL>(ALL)
+  const [statusFilter, setStatusFilter] = useState<StockStatus | typeof ALL>(ALL)
+  const [sort, setSort] = useState<{ key: SortKey; dir: SortDir } | null>(null)
+
+  const toggleSort = (key: SortKey) =>
+    setSort((s) => {
+      if (!s || s.key !== key) return { key, dir: 'asc' }
+      return s.dir === 'asc' ? { key, dir: 'desc' } : null
+    })
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
+    const rows = products.filter((p) => {
       const matchSearch = p.name.toLowerCase().includes(search.toLowerCase())
       const matchCat    = catFilter === ALL || p.category === catFilter
       const matchRegion = regionFilter === ALL || p.region === regionFilter
-      return matchSearch && matchCat && matchRegion
+      const matchStatus = statusFilter === ALL || getStatus(p.stock) === statusFilter
+      return matchSearch && matchCat && matchRegion && matchStatus
     })
-  }, [products, search, catFilter, regionFilter])
+    if (!sort) return rows
+    const dir = sort.dir === 'asc' ? 1 : -1
+    return [...rows].sort((a, b) => {
+      const av = a[sort.key]
+      const bv = b[sort.key]
+      return (typeof av === 'number' && typeof bv === 'number'
+        ? av - bv
+        : String(av).localeCompare(String(bv))) * dir
+    })
+  }, [products, search, catFilter, regionFilter, statusFilter, sort])
+
+  const renderSortHeader = (k: SortKey, label: string, align: 'left' | 'right') => {
+    const active = sort?.key === k
+    const Icon = !active ? ArrowUpDown : sort.dir === 'asc' ? ArrowUp : ArrowDown
+    return (
+      <th
+        aria-sort={active ? (sort.dir === 'asc' ? 'ascending' : 'descending') : 'none'}
+        className={`px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap ${align === 'right' ? 'text-right' : 'text-left'}`}
+      >
+        <button
+          onClick={() => toggleSort(k)}
+          className={`inline-flex items-center gap-1.5 hover:text-slate-800 dark:hover:text-slate-200 transition-colors ${active ? 'text-sky-600 dark:text-sky-400' : ''}`}
+        >
+          {label}
+          <Icon className="w-3.5 h-3.5" />
+        </button>
+      </th>
+    )
+  }
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: '0ms' }}>
@@ -93,6 +154,28 @@ export default function InventoryTable({ products }: Props) {
             </option>
           ))}
         </select>
+
+        {/* Status filter */}
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value as StockStatus | typeof ALL)}
+          className="px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+        >
+          {statuses.map((st) => (
+            <option key={st} value={st}>
+              {st === ALL ? 'All Statuses' : st}
+            </option>
+          ))}
+        </select>
+
+        <button
+          onClick={() => downloadCsv(filtered)}
+          disabled={filtered.length === 0}
+          className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-sky-500 text-white hover:bg-sky-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        >
+          <Download className="w-4 h-4" />
+          CSV
+        </button>
       </div>
 
       {/* Table */}
@@ -101,11 +184,11 @@ export default function InventoryTable({ products }: Props) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-slate-100 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-800/40">
-                <th className="text-left px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Product</th>
-                <th className="text-left px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Category</th>
-                <th className="text-left px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Region</th>
-                <th className="text-right px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Stock</th>
-                <th className="text-right px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Sold / Mo</th>
+                {renderSortHeader('name', 'Product', 'left')}
+                {renderSortHeader('category', 'Category', 'left')}
+                {renderSortHeader('region', 'Region', 'left')}
+                {renderSortHeader('stock', 'Stock', 'right')}
+                {renderSortHeader('unitsSoldThisMonth', 'Sold / Mo', 'right')}
                 <th className="text-center px-5 py-3 font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">Status</th>
               </tr>
             </thead>

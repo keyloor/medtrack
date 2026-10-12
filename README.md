@@ -4,7 +4,7 @@
 
 > A polished, fully responsive healthcare inventory and sales analytics dashboard built with React, TypeScript, and Tailwind CSS.
 
-MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clearimg.shields.io real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a fully sortable inventory table, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
+MedTrack is a production-shaped reference app for a common medical operations workflow: **giving healthcare teams a clear, real-time view of product stock levels, regional sales performance, and inventory alerts.** Explore the dashboard to view computed KPI metrics, interactive charts, a sortable, filterable inventory table with CSV export, and severity-sorted alert cards — all in a sleek, responsive UI with light and dark modes.
 
 ---
 
@@ -12,7 +12,7 @@ MedTrack is a production-shaped reference app for a common medical operations wo
 
 - **Overview Panel built for skim-reading**: 4 KPI cards including total products, units sold this month, active alert count (turns red when > 5), and top-performing region. Values computed live from local JSON data.
 - **Sales Analytics** with interactive Recharts: a line chart showing a 12-month sales trend across 5 global regions, and a responsive bar chart of units sold by medical product category.
-- **Inventory Table** featuring all medical products with live search functionality, dropdown filters (category and region), and automatically computed status badges (In Stock, Low Stock, Critical).
+- **Inventory Table** featuring all medical products with live search functionality, dropdown filters (category, region and status), click-to-sort columns, CSV export of the filtered view, and automatically computed status badges (In Stock, Low Stock, Critical).
 - **Alerts Panel** rendering active inventory alerts, sorted automatically by severity. Features custom stock progress bars and severity badges.
 - **Dark, enterprise UI** with a built-in light / dark mode toggle that persists to `localStorage` and respects system preferences. Tailwind tokens: `#0f172a` background, `#1e293b` cards.
 - **Subtle fade-in-up animations** with staggered delays for a polished, modern feel on every section and card.
@@ -74,7 +74,7 @@ medtrack/
 
 ```bash
 # Clone the repository
-git clone https://github.com/keylo/medtrack.git
+git clone https://github.com/keyloor/medtrack.git
 cd medtrack
 
 # Install dependencies
@@ -130,7 +130,7 @@ These aren't built — they're natural next moves if you want to extend the proj
 
 - Connect to a real database (e.g. Supabase, Firebase, or a custom backend)
 - Add user authentication and role-based access for viewing hospital stock
-- Export reports as PDF or CSV directly from the table views
+- Export reports as PDF from the table views
 - Real-time WebSockets to update stock numbers dynamically
 
 ## License
